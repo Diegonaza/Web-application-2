@@ -1,23 +1,17 @@
 const http = require("http"),
-axios = require("axios");
+      logger =  require("morgan"),
+      express = require("express"),
+      bodyParser = require("body-parser");
 
-http.createServer((req,res)=>{
-    res.write("Users Emails"+ "\n")
-    res.write(emails.join("\n")+"\n");
-    res.write("\n"+"User NAMES"+"\n");
-    res.write(users.join(", "));
-    res.end()
-}).listen(8000);
+let app = express();
+let port = 8000;
+app.use(bodyParser.json());
+app.use(logger("tiny"));
 
-let users = [];
-let emails = [];
+app.get("/",(req, res)=>{
+    res.json({message: "Hello Fuckers"})
+})
 
-(async function getNames(){
-    try {
-        const {data} = await axios.get("https://jsonplaceholder.typicode.com/users");
-        users = data.map(user=>user.name)
-        emails = data.map(user=>user.email)
-    }catch(error){
-        console.log(error)
-    }
-})()
+app.listen(port, function(err){
+    console.log("Listening on Port " + port)
+});
