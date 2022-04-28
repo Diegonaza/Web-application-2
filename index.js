@@ -5,12 +5,11 @@ const http = require("http"),
 
 let app = express();
 let port = 8000;
+app.use(require('./routes'));
 app.use(bodyParser.json());
 app.use(logger("tiny"));
 
-app.get("/",(req, res)=>{
-    res.json({message: "Hello Fuckers"})
-})
+
 
 app.listen(port, function(err){
     console.log("Listening on Port " + port)
