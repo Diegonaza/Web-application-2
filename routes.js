@@ -5,6 +5,6 @@ const express = require("express"),
 
 router.get("/:foo/:bar", itemCtrl.helloWorld);
 router.post('/users', userCtrl.createUser);
-router.get('/users', userCtrl.getUser);
+router.get('/users', userCtrl.getUsers);
 
 module.exports = router;
