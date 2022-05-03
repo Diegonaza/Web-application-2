@@ -6,17 +6,22 @@ const http = require("http"),
 
 let app = express();
 let port = 8000;
+
 app.use(require('./routes'));
 app.use(bodyParser.json());
 app.use(logger("tiny"));
 
-const dbURI = "mongodb://localhost/test";
- 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }) 
-        .then((result) => console.log('connected to db')) 
-        .catch((err) => console.log(err));
-13
 
+mongoose.connect("mongodb://localhost/test");
+
+mongoose.connection.on('error',(err) =>{
+        console.log('Mongodb Error: ', err);
+        process.exit();
+});
+
+mongoose.connection.on('error',(err) =>{
+        console.log("MongoDb connection Success");
+});
 
 app.listen(port, function(err){
     console.log("Listening on Port " + port)
