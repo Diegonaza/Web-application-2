@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(logger("tiny"));
 
 
-mongoose.connect("mongodb://localhost/test");
+mongoose.connect('mongodb://localhost/test');
 
 mongoose.connection.on('error',(err) =>{
         console.log('Mongodb Error: ', err);
