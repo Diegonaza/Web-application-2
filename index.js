@@ -7,8 +7,8 @@ const http = require("http"),
 let app = express();
 let port = 8000;
 
-app.use(require('./routes'));
 app.use(bodyParser.json());
+app.use(require('./routes'));
 app.use(logger("tiny"));
 
 
