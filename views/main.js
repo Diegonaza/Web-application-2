@@ -1,4 +1,4 @@
-const urlNew = "https://8000-diegonaza-iwalabs-ql66toz8wlt.ws-eu45.gitpod.io/workouts/";
+const urlNew = "https://diegoiwaca2.herokuapp.com/";
 
 async function LoadIntoTable(url,table){
     const tableBody = table.querySelector("tbody");
