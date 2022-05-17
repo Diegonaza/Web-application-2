@@ -1,3 +1,5 @@
+const urlNew = "https://8000-diegonaza-iwalabs-ql66toz8wlt.ws-eu45.gitpod.io/workouts/";
+
 async function LoadIntoTable(url,table){
     const tableBody = table.querySelector("tbody");
     const response = await fetch(url);
@@ -46,11 +48,11 @@ async function LoadIntoTable(url,table){
     }
 
 }
-LoadIntoTable("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts",document.querySelector("table"));
+LoadIntoTable(urlNew,document.querySelector("table"));
 
 //calls function that will add a workout to the table
 document.getElementById("add-Button").onclick = function(){
-    addWorkout("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts");
+    addWorkout(urlNew);
 }
 
 function addWorkout(url) {
@@ -75,8 +77,8 @@ function addWorkout(url) {
 
     xhr.send(data);
     
-    LoadIntoTable("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts",document.querySelector("table"));
-   
+    LoadIntoTable(urlNew,document.querySelector("table"));
+    
   }
 
   //On click function delete button
@@ -87,10 +89,10 @@ function addWorkout(url) {
   function deleteWorkout(){
     let id = document.getElementById("fieldidtodelete").value ;  
     let xhr = new XMLHttpRequest();
-    xhr.open("DELETE", "https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts/"+id);
+    xhr.open("DELETE", urlNew+id);
     
     xhr.onload = () => console.log(xhr.responseText);
     xhr.send();
     //reload the table
-    LoadIntoTable("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts",document.querySelector("table"));
+    LoadIntoTable(urlNew,document.querySelector("table"));
   }
