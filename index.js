@@ -6,7 +6,7 @@ const http = require("http"),
       dotenv = require("dotenv");
 
 let app = express();
-let port = process.env.dbURI || 8000;
+let port = process.env.PORT || 8000;
 
 dotenv.config();
 
@@ -18,7 +18,7 @@ app.use(require('./routes'));
 
 
 
-  mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  mongoose.connect("mongodb+srv://admin:admin@cluster0.1iwa8.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
           .then((result) => console.log('connected to db'))
           .catch((err) => console.log(err));
 
