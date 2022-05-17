@@ -1,0 +1,105 @@
+{
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Style the header */
+  header {
+    background-color: #666;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+  }
+  
+  /* Container for flexboxes */
+  section {
+    display: -webkit-flex;
+    display: flex;
+  }
+  
+  /* Style the navigation menu */
+  nav {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background: #ccc;
+    padding: 20px;
+  }
+  
+  /* Style the list inside the menu */
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Style the content */
+  article {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background-color: #f1f1f1;
+    padding: 10px;
+  }
+
+  articletwo{
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background-color: #f1f1f1;
+    padding: 10px;
+  }
+  
+  /* Style the footer */
+  footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+  @media (max-width: 600px) {
+    section {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    }
+  }
+
+  
+  .content-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
+}
+
+.content-table thead tr{
+    background-color: rgb(51, 177, 177);
+    color: aliceblue;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td{
+    padding: 12px 15px;
+}
+
+.content-table tbody tr{
+    border-bottom: 2px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:nth-last-of-type{
+    border-bottom: 2px rgb(51, 177, 177);
+}

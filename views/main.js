@@ -7,29 +7,52 @@ async function LoadIntoTable(url,table){
     tableBody.innerHTML = "";
 
     //populate rows
-    
+   //for each object in the response
     for(const UserData of data){
+        //counter to check if the first element of the table row
+        let counter = 0;
+        //create a new row to add the element
        const rowElement = document.createElement("tr");
+       //for each key value in the json response, we will add it to a cell in the table
        Object.entries(UserData).forEach(([key, value]) => {
+           //exclude this auto generated key from being added to the table
        if(key != "__v"){
-        let cellElement = document.createElement("td");
-        cellElement.textContent = value;
-            rowElement.appendChild(cellElement);
-            tableBody.appendChild(rowElement);
+           //if is the first key we know it is the ID, so we want to add a on click function that will help with the delete method in the future
+           if(counter ==0 ){
+               //create a table data
+            let cellElement = document.createElement("td");
+            //set the table data  text content to the value of that key
+            cellElement.textContent = value;
+                //append the value to the row element
+                rowElement.appendChild(cellElement);
+                cellElement.onclick=function(){
+                    console.log("yay");
+                }
+                //append this row to the table body
+                tableBody.appendChild(rowElement);
+
+           }else{
+            let cellElement = document.createElement("td");
+            cellElement.textContent = value;
+                rowElement.appendChild(cellElement);
+                tableBody.appendChild(rowElement);
+           }
+      
        }
-        
+        counter++;
       });
        
     }
 
 }
-LoadIntoTable("https://8000-diegonaza-iwalabs-q9t94353zmc.ws-eu45.gitpod.io/workouts",document.querySelector("table"));
+LoadIntoTable("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts",document.querySelector("table"));
 
 
 document.getElementById("add-Button").onclick = function(){
-    myFunction("https://8000-diegonaza-iwalabs-q9t94353zmc.ws-eu45.gitpod.io/workouts/");
+    addWorkout("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts");
 }
-function myFunction(url) {
+
+function addWorkout(url) {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url);
     
@@ -37,10 +60,10 @@ function myFunction(url) {
     xhr.setRequestHeader("Content-Type", "application/json");
     
     xhr.onload = () => console.log(xhr.responseText);
-    let day = document.getElementById("field1").value;
-    let exercise = document.getElementById("field2").value;
-    let series = document.getElementById("field3").value;
-    let rest = document.getElementById("field4").value;
+    let day = document.getElementById("fieldday").value;
+    let exercise = document.getElementById("fieldexercise").value;
+    let series = document.getElementById("fieldseries").value;
+    let rest = document.getElementById("fieldrest").value;
 
     let data = `{
         "day":"${day}",
@@ -52,6 +75,6 @@ function myFunction(url) {
    
     
     xhr.send(data);
-    LoadIntoTable("https://8000-diegonaza-iwalabs-q9t94353zmc.ws-eu45.gitpod.io/workouts",document.querySelector("table"));
+    LoadIntoTable("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts",document.querySelector("table"));
    // document.getElementById("field2").value = document.getElementById("field1").value;
   }

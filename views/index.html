@@ -5,45 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 
-<style>
-    .content-table{
-        border-collapse: collapse;
-        margin: 25px 0;
-        font-size: 0.9em;
-        min-width: 400px;
-        border-radius: 5px 5px 0 0;
-        overflow: hidden;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
-    }
 
-    .content-table thead tr{
-        background-color: rgb(51, 177, 177);
-        color: aliceblue;
-        text-align: left;
-        font-weight: bold;
-    }
-
-    .content-table th,
-    .content-table td{
-        padding: 12px 15px;
-    }
-
-    .content-table tbody tr{
-        border-bottom: 2px solid #dddddd;
-    }
-
-    .content-table tbody tr:nth-of-type(even){
-        background-color: #f3f3f3;
-    }
-
-    .content-table tbody tr:nth-last-of-type{
-        border-bottom: 2px rgb(51, 177, 177);
-    }
-</style>
 
 <body>
+
+    <header>
+        <h2>Welcome to Diego's Workout Planner</h2>
+      </header>
+<section>
+    <nav>
     <table class="content-table">
         <thead>
             <tr>
@@ -56,18 +29,31 @@
         </thead>
         <tbody></tbody>
     </table>
+</nav>
 
+<article>
     <h2>Add a Workout</h2>
 
-<p>Day:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="field1" ></p>
-<p>Exercise: <input type="text" id="field2"></p>
-<p>Series:&nbsp&nbsp&nbsp&nbsp <input type="text" id="field3"></p>
-<p>Rest: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="field4"></p>
+<p>Day:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="fieldday" ></p> 
+<p>Exercise: <input type="text" id="fieldexercise"></p>
+<p>Series:&nbsp&nbsp&nbsp&nbsp <input type="text" id="fieldseries"></p>
+<p>Rest: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="fieldrest"></p>
 
 
 <button id = "add-Button" >Add</button>
+</article>
+
+<articletwo>
+    <h2>Select the workout that you want to remove by clicking on its ID, or enter it manually in the ID field</h2>
+
+    <p>ID:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="fieldidtodelete" ></p> 
+    
+    
+    
+    <button id = "delete-Button" >Delete</button>
+</articletwo>
 
   <script src = "main.js"></script>
-  
+</section>
 </body>
 </html>
