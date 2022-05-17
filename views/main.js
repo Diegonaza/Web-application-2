@@ -1,8 +1,8 @@
-const urlNew = "https://diegoiwaca2.herokuapp.com/";
+const urlNew = "https://diegoiwaca2.herokuapp.com/workouts";
 
 async function LoadIntoTable(url,table){
     const tableBody = table.querySelector("tbody");
-    const response = await fetch(url);
+    const response = await fetch(url,  { mode: 'no-cors'});
     const data = await response.json();
     
     //clear table
