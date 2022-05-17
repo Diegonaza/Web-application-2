@@ -26,7 +26,8 @@ async function LoadIntoTable(url,table){
                 //append the value to the row element
                 rowElement.appendChild(cellElement);
                 cellElement.onclick=function(){
-                    console.log("yay");
+                    document.getElementById("fieldidtodelete").value = cellElement.textContent;
+                    
                 }
                 //append this row to the table body
                 tableBody.appendChild(rowElement);
@@ -47,7 +48,7 @@ async function LoadIntoTable(url,table){
 }
 LoadIntoTable("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts",document.querySelector("table"));
 
-
+//calls function that will add a workout to the table
 document.getElementById("add-Button").onclick = function(){
     addWorkout("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts");
 }
@@ -71,10 +72,25 @@ function addWorkout(url) {
         "series":"${series}",
         "rest":"${rest}"
     }`;
-   
-   
-    
+
     xhr.send(data);
+    
     LoadIntoTable("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts",document.querySelector("table"));
-   // document.getElementById("field2").value = document.getElementById("field1").value;
+   
+  }
+
+  //On click function delete button
+  document.getElementById("delete-Button").onclick = function(){
+    deleteWorkout();
+}
+
+  function deleteWorkout(){
+    let id = document.getElementById("fieldidtodelete").value ;  
+    let xhr = new XMLHttpRequest();
+    xhr.open("DELETE", "https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts/"+id);
+    
+    xhr.onload = () => console.log(xhr.responseText);
+    xhr.send();
+    //reload the table
+    LoadIntoTable("https://8000-diegonaza-iwalabs-havdjfbqn7u.ws-eu45.gitpod.io/workouts",document.querySelector("table"));
   }
