@@ -1,4 +1,5 @@
 const http = require("http"),
+      path = require('path'), //Utility that allows us to work with directory paths
       logger =  require("morgan"),
       express = require("express"),
       mongoose = require("mongoose"),
@@ -11,6 +12,7 @@ dotenv.config();
 
 app.use(logger("tiny"));
 app.use(express.json());
+app.use(express.static(path.resolve(__dirname,'views')));
 app.use(require('./routes'));
 
 
