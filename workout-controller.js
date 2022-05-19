@@ -12,6 +12,8 @@ exports.createWorkout = function(req, res) {
 };
 
 exports.GetWorkouts = function(req, res) { 
+  res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     Workout.find({}, function (err, workouts) { 
       if (err) { 
         res.status(400).json(err);  
@@ -21,6 +23,7 @@ exports.GetWorkouts = function(req, res) {
   };
 
   exports.deleteWorkout = function(req, res) { 
+    
     Workout.findByIdAndRemove(req.params.id, function (err, workout) { 
       if (err) { 
         res.status(400).json(err); 
